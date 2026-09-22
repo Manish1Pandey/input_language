@@ -3,17 +3,17 @@
 import PackageDescription
 
 let package = Package(
-  name: "keyboard_language",
+  name: "input_language",
   platforms: [
     .iOS("13.0")
   ],
   products: [
-    .library(name: "keyboard-language", targets: ["keyboard_language"])
+    .library(name: "input-language", targets: ["input_language"])
   ],
   dependencies: [],
   targets: [
     .target(
-      name: "keyboard_language",
+      name: "input_language",
       dependencies: [],
       resources: [
         .process("Resources")

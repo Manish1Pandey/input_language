@@ -3,7 +3,7 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  keyboard_language
+  input_language
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

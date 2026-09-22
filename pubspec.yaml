@@ -1,9 +1,9 @@
-name: keyboard_language
+name: input_language
 description: Detect and stream the active keyboard / input language (BCP-47, RTL) on iOS, Android, macOS, Windows, Linux and web, and auto-set TextField direction.
 version: 0.1.0
-homepage: https://github.com/Manish1Pandey/keyboard_language
-repository: https://github.com/Manish1Pandey/keyboard_language
-issue_tracker: https://github.com/Manish1Pandey/keyboard_language/issues
+homepage: https://github.com/Manish1Pandey/input_language
+repository: https://github.com/Manish1Pandey/input_language
+issue_tracker: https://github.com/Manish1Pandey/input_language/issues
 topics:
   - keyboard
   - rtl
@@ -36,17 +36,17 @@ flutter:
   plugin:
     platforms:
       android:
-        package: dev.manishpanday.keyboard_language
-        pluginClass: KeyboardLanguagePlugin
+        package: dev.manishpanday.input_language
+        pluginClass: InputLanguagePlugin
       ios:
-        pluginClass: KeyboardLanguagePlugin
+        pluginClass: InputLanguagePlugin
       macos:
-        pluginClass: KeyboardLanguagePlugin
+        pluginClass: InputLanguagePlugin
       windows:
-        pluginClass: KeyboardLanguagePluginCApi
+        pluginClass: InputLanguagePluginCApi
       linux:
         dartPluginClass: KeyboardLanguageLinux
-        dartFileName: keyboard_language_linux.dart
+        dartFileName: input_language_linux.dart
       web:
         pluginClass: KeyboardLanguageWeb
-        fileName: keyboard_language_web.dart
+        fileName: input_language_web.dart

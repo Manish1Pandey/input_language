@@ -2,25 +2,25 @@ import Carbon
 import Cocoa
 import FlutterMacOS
 
-/// macOS implementation of keyboard_language, built on the Text Input Sources
+/// macOS implementation of input_language, built on the Text Input Sources
 /// API: reads `TISCopyCurrentKeyboardInputSource`, observes the distributed
 /// notification `kTISNotifySelectedKeyboardInputSourceChanged`, lists
 /// select-capable keyboard input sources and selects one with
 /// `TISSelectInputSource`.
-public class KeyboardLanguagePlugin: NSObject, FlutterPlugin, FlutterStreamHandler {
+public class InputLanguagePlugin: NSObject, FlutterPlugin, FlutterStreamHandler {
   private var eventSink: FlutterEventSink?
   private var observer: NSObjectProtocol?
   private var lastSent: NSDictionary?
   private var hasSent = false
 
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let instance = KeyboardLanguagePlugin()
+    let instance = InputLanguagePlugin()
     let channel = FlutterMethodChannel(
-      name: "dev.manishpanday/keyboard_language",
+      name: "dev.manishpanday/input_language",
       binaryMessenger: registrar.messenger)
     registrar.addMethodCallDelegate(instance, channel: channel)
     let events = FlutterEventChannel(
-      name: "dev.manishpanday/keyboard_language/events",
+      name: "dev.manishpanday/input_language/events",
       binaryMessenger: registrar.messenger)
     events.setStreamHandler(instance)
   }
@@ -108,17 +108,17 @@ public class KeyboardLanguagePlugin: NSObject, FlutterPlugin, FlutterStreamHandl
   /// equals `languageTag`, else the first whose primary language subtag
   /// matches. Returns false when none matches or selection fails.
   private func select(languageTag: String) -> Bool {
-    let wanted = KeyboardLanguagePlugin.normalize(languageTag)
+    let wanted = InputLanguagePlugin.normalize(languageTag)
     let wantedPrimary = wanted.split(separator: "-").first.map(String.init) ?? wanted
     let sources = selectableSources()
     let exact = sources.first { source in
-      languages(of: source).first.map(KeyboardLanguagePlugin.normalize) == wanted
+      languages(of: source).first.map(InputLanguagePlugin.normalize) == wanted
     }
     let candidate =
       exact
       ?? sources.first { source in
         guard let primary = languages(of: source).first else { return false }
-        let normalized = KeyboardLanguagePlugin.normalize(primary)
+        let normalized = InputLanguagePlugin.normalize(primary)
         return normalized.split(separator: "-").first.map(String.init) == wantedPrimary
       }
     guard let source = candidate else { return false }

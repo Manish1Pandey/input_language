@@ -1,4 +1,4 @@
-package dev.manishpanday.keyboard_language_example
+package dev.manishpanday.input_language_example
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,5 +1,5 @@
-#ifndef FLUTTER_PLUGIN_KEYBOARD_LANGUAGE_PLUGIN_H_
-#define FLUTTER_PLUGIN_KEYBOARD_LANGUAGE_PLUGIN_H_
+#ifndef FLUTTER_PLUGIN_INPUT_LANGUAGE_PLUGIN_H_
+#define FLUTTER_PLUGIN_INPUT_LANGUAGE_PLUGIN_H_
 
 #include <windows.h>
 
@@ -12,24 +12,24 @@
 #include <optional>
 #include <string>
 
-namespace keyboard_language {
+namespace input_language {
 
-// Windows implementation of keyboard_language.
+// Windows implementation of input_language.
 //
 // Reads the active keyboard layout of the UI thread (GetKeyboardLayout), maps
 // its LANGID to a BCP-47 locale name (LCIDToLocaleName), observes
 // WM_INPUTLANGCHANGE / WM_ACTIVATE on the top-level window, lists installed
 // layouts (GetKeyboardLayoutList) and activates one (ActivateKeyboardLayout).
-class KeyboardLanguagePlugin : public flutter::Plugin {
+class InputLanguagePlugin : public flutter::Plugin {
  public:
   static void RegisterWithRegistrar(flutter::PluginRegistrarWindows* registrar);
 
-  explicit KeyboardLanguagePlugin(flutter::PluginRegistrarWindows* registrar);
+  explicit InputLanguagePlugin(flutter::PluginRegistrarWindows* registrar);
 
-  virtual ~KeyboardLanguagePlugin();
+  virtual ~InputLanguagePlugin();
 
-  KeyboardLanguagePlugin(const KeyboardLanguagePlugin&) = delete;
-  KeyboardLanguagePlugin& operator=(const KeyboardLanguagePlugin&) = delete;
+  InputLanguagePlugin(const InputLanguagePlugin&) = delete;
+  InputLanguagePlugin& operator=(const InputLanguagePlugin&) = delete;
 
   void HandleMethodCall(
       const flutter::MethodCall<flutter::EncodableValue>& method_call,
@@ -56,6 +56,6 @@ class KeyboardLanguagePlugin : public flutter::Plugin {
   flutter::EncodableValue last_sent_;
 };
 
-}  // namespace keyboard_language
+}  // namespace input_language
 
-#endif  // FLUTTER_PLUGIN_KEYBOARD_LANGUAGE_PLUGIN_H_
+#endif  // FLUTTER_PLUGIN_INPUT_LANGUAGE_PLUGIN_H_

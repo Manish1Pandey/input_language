@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:keyboard_language/keyboard_language.dart';
+import 'package:input_language/input_language.dart';
 
 /// In-memory [KeyboardLanguagePlatform] driven by the tests.
 class FakeKeyboardLanguagePlatform extends KeyboardLanguagePlatform {

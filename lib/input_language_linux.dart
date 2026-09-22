@@ -1,4 +1,4 @@
-/// Linux implementation of `keyboard_language` (best effort).
+/// Linux implementation of `input_language` (best effort).
 ///
 /// Reads the active input source from GNOME
 /// (`gsettings get org.gnome.desktop.input-sources mru-sources`, whose first

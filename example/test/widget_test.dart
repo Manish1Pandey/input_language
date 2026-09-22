@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:keyboard_language/keyboard_language.dart';
-import 'package:keyboard_language_example/main.dart';
+import 'package:input_language/input_language.dart';
+import 'package:input_language_example/main.dart';
 
 class _Platform extends KeyboardLanguagePlatform {
   final StreamController<InputLanguage?> events =

@@ -1,21 +1,21 @@
 PODS:
   - FlutterMacOS (1.0.0)
-  - keyboard_language (0.1.0):
+  - input_language (0.1.0):
     - FlutterMacOS
 
 DEPENDENCIES:
   - FlutterMacOS (from `Flutter/ephemeral`)
-  - keyboard_language (from `Flutter/ephemeral/.symlinks/plugins/keyboard_language/macos`)
+  - input_language (from `Flutter/ephemeral/.symlinks/plugins/input_language/macos`)
 
 EXTERNAL SOURCES:
   FlutterMacOS:
     :path: Flutter/ephemeral
-  keyboard_language:
-    :path: Flutter/ephemeral/.symlinks/plugins/keyboard_language/macos
+  input_language:
+    :path: Flutter/ephemeral/.symlinks/plugins/input_language/macos
 
 SPEC CHECKSUMS:
   FlutterMacOS: d0db08ddef1a9af05a5ec4b724367152bb0500b1
-  keyboard_language: 1c7f14acf8f4e2ed51c6e8f720bfc5fe69b31027
+  input_language: efac6c14d4d59dcdf7d6cc0bf4edd019128d12fc
 
 PODFILE CHECKSUM: 54d867c82ac51cbd61b565781b9fada492027009
 

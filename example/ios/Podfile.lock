@@ -1,27 +1,27 @@
 PODS:
   - Flutter (1.0.0)
-  - integration_test (0.0.1):
+  - input_language (0.1.0):
     - Flutter
-  - keyboard_language (0.1.0):
+  - integration_test (0.0.1):
     - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
+  - input_language (from `.symlinks/plugins/input_language/ios`)
   - integration_test (from `.symlinks/plugins/integration_test/ios`)
-  - keyboard_language (from `.symlinks/plugins/keyboard_language/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
+  input_language:
+    :path: ".symlinks/plugins/input_language/ios"
   integration_test:
     :path: ".symlinks/plugins/integration_test/ios"
-  keyboard_language:
-    :path: ".symlinks/plugins/keyboard_language/ios"
 
 SPEC CHECKSUMS:
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+  input_language: 1ae09d0cbcc23114053915f38d5ba50d97a05493
   integration_test: 4a889634ef21a45d28d50d622cf412dc6d9f586e
-  keyboard_language: b95d0067ce8c8d4f6c4e08fed7bef88cc10ddcd8
 
 PODFILE CHECKSUM: 3c63482e143d1b91d2d2560aee9fb04ecc74ac7e
 

@@ -1,1 +1,1 @@
-rootProject.name = 'keyboard_language'
+rootProject.name = 'input_language'

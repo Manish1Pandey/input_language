@@ -1,6 +1,6 @@
 {
-    "name": "keyboard_language_example",
-    "short_name": "keyboard_language_example",
+    "name": "input_language_example",
+    "short_name": "input_language_example",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

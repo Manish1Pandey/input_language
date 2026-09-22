@@ -12,7 +12,7 @@ export 'src/bidi_table.g.dart' show kBidiUnicodeVersion;
 export 'src/capabilities.dart';
 export 'src/direction.dart';
 export 'src/input_language.dart';
-export 'src/keyboard_language.dart';
+export 'src/input_language_api.dart';
 export 'src/method_channel.dart';
 export 'src/platform_interface.dart';
 export 'src/rtl.dart';

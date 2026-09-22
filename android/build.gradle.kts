@@ -1,4 +1,4 @@
-group = "dev.manishpanday.keyboard_language"
+group = "dev.manishpanday.input_language"
 version = "1.0-SNAPSHOT"
 
 buildscript {
@@ -26,7 +26,7 @@ plugins {
 }
 
 android {
-    namespace = "dev.manishpanday.keyboard_language"
+    namespace = "dev.manishpanday.input_language"
 
     compileSdk = 36
 

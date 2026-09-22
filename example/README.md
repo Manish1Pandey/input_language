@@ -1,6 +1,6 @@
-# keyboard_language example
+# input_language example
 
-Demonstrates every feature of `keyboard_language`: the current keyboard language,
+Demonstrates every feature of `input_language`: the current keyboard language,
 the `onChanged` stream, enabled keyboards and `setLanguage` (macOS / Windows),
 capabilities, `AutoDirectionTextField` with each policy, `AutoDirectionBuilder`
 around a `TextFormField`, and the bidi first-strong detector.

@@ -36,7 +36,7 @@ abstract final class KeyboardLanguage {
   static Future<InputLanguage?> get current =>
       KeyboardLanguagePlatform.instance.getCurrent();
 
-  /// Broadcast stream of keyboard-language changes.
+  /// Broadcast stream of input-language changes.
   ///
   /// The native observer runs only while this stream has listeners. When
   /// listening starts the platform emits the current value (where it can),

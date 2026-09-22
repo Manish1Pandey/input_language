@@ -1,4 +1,4 @@
-#include "keyboard_language_plugin.h"
+#include "input_language_plugin.h"
 
 // This must be included before many other Windows headers.
 #include <windows.h>
@@ -12,12 +12,12 @@
 #include <string>
 #include <vector>
 
-namespace keyboard_language {
+namespace input_language {
 
 namespace {
 
-constexpr char kMethodChannel[] = "dev.manishpanday/keyboard_language";
-constexpr char kEventChannel[] = "dev.manishpanday/keyboard_language/events";
+constexpr char kMethodChannel[] = "dev.manishpanday/input_language";
+constexpr char kEventChannel[] = "dev.manishpanday/input_language/events";
 
 using flutter::EncodableList;
 using flutter::EncodableMap;
@@ -118,10 +118,10 @@ EncodableMap Capabilities() {
 }  // namespace
 
 // static
-void KeyboardLanguagePlugin::RegisterWithRegistrar(
+void InputLanguagePlugin::RegisterWithRegistrar(
     flutter::PluginRegistrarWindows* registrar) {
-  auto plugin = std::make_unique<KeyboardLanguagePlugin>(registrar);
-  KeyboardLanguagePlugin* plugin_pointer = plugin.get();
+  auto plugin = std::make_unique<InputLanguagePlugin>(registrar);
+  InputLanguagePlugin* plugin_pointer = plugin.get();
 
   auto method_channel =
       std::make_unique<flutter::MethodChannel<EncodableValue>>(
@@ -155,7 +155,7 @@ void KeyboardLanguagePlugin::RegisterWithRegistrar(
   registrar->AddPlugin(std::move(plugin));
 }
 
-KeyboardLanguagePlugin::KeyboardLanguagePlugin(
+InputLanguagePlugin::InputLanguagePlugin(
     flutter::PluginRegistrarWindows* registrar)
     : registrar_(registrar) {
   window_proc_id_ = registrar_->RegisterTopLevelWindowProcDelegate(
@@ -164,13 +164,13 @@ KeyboardLanguagePlugin::KeyboardLanguagePlugin(
       });
 }
 
-KeyboardLanguagePlugin::~KeyboardLanguagePlugin() {
+InputLanguagePlugin::~InputLanguagePlugin() {
   if (window_proc_id_ >= 0) {
     registrar_->UnregisterTopLevelWindowProcDelegate(window_proc_id_);
   }
 }
 
-void KeyboardLanguagePlugin::HandleMethodCall(
+void InputLanguagePlugin::HandleMethodCall(
     const flutter::MethodCall<EncodableValue>& method_call,
     std::unique_ptr<flutter::MethodResult<EncodableValue>> result) {
   const std::string& method = method_call.method_name();
@@ -206,7 +206,7 @@ void KeyboardLanguagePlugin::HandleMethodCall(
   }
 }
 
-bool KeyboardLanguagePlugin::SelectLanguage(const std::string& language_tag) {
+bool InputLanguagePlugin::SelectLanguage(const std::string& language_tag) {
   const std::wstring wanted = Lower(WideFromUtf8(language_tag));
   const std::wstring wanted_primary = PrimarySubtag(wanted);
   const std::vector<HKL> layouts = InstalledLayouts();
@@ -233,7 +233,7 @@ bool KeyboardLanguagePlugin::SelectLanguage(const std::string& language_tag) {
   return true;
 }
 
-void KeyboardLanguagePlugin::StartListening(
+void InputLanguagePlugin::StartListening(
     std::unique_ptr<flutter::EventSink<EncodableValue>> sink) {
   sink_ = std::move(sink);
   has_sent_ = false;
@@ -241,9 +241,9 @@ void KeyboardLanguagePlugin::StartListening(
   EmitIfChanged();
 }
 
-void KeyboardLanguagePlugin::StopListening() { sink_.reset(); }
+void InputLanguagePlugin::StopListening() { sink_.reset(); }
 
-std::optional<LRESULT> KeyboardLanguagePlugin::HandleWindowProc(
+std::optional<LRESULT> InputLanguagePlugin::HandleWindowProc(
     HWND /*hwnd*/, UINT message, WPARAM /*wparam*/, LPARAM /*lparam*/) {
   // WM_INPUTLANGCHANGE reaches the top-level window after the user switches
   // the input language; WM_ACTIVATE covers switches made in another app while
@@ -254,7 +254,7 @@ std::optional<LRESULT> KeyboardLanguagePlugin::HandleWindowProc(
   return std::nullopt;
 }
 
-void KeyboardLanguagePlugin::EmitIfChanged() {
+void InputLanguagePlugin::EmitIfChanged() {
   if (!sink_) return;
   EncodableValue current = PayloadForLayout(::GetKeyboardLayout(0));
   if (has_sent_ && current == last_sent_) return;
@@ -263,4 +263,4 @@ void KeyboardLanguagePlugin::EmitIfChanged() {
   sink_->Success(current);
 }
 
-}  // namespace keyboard_language
+}  // namespace input_language

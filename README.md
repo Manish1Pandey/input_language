@@ -1,4 +1,4 @@
-# keyboard_language
+# input_language
 
 Find out which **keyboard / input language** the user is typing with, get notified when they
 switch, and make any `TextField` flip to right-to-left automatically, with a correct Unicode
@@ -10,7 +10,7 @@ keyboard language"). Also answers
 language from code"): it works on macOS and Windows, and on the other platforms the OS doesn't
 allow it (see below).
 
-<img src="https://raw.githubusercontent.com/Manish1Pandey/keyboard_language/main/screenshots/ios_hebrew_rtl.png" width="300" alt="Example app on the iOS simulator: Hebrew keyboard detected, text field switched to right-to-left">
+<img src="https://raw.githubusercontent.com/Manish1Pandey/input_language/main/screenshots/ios_hebrew_rtl.png" width="300" alt="Example app on the iOS simulator: Hebrew keyboard detected, text field switched to right-to-left">
 
 *Example app on the iOS 18.6 simulator: the Hebrew keyboard is detected (`he-IL · RTL`) and the
 auto-direction field has switched to right-to-left.*
@@ -26,7 +26,7 @@ it.
 
 ```yaml
 dependencies:
-  keyboard_language: ^0.1.0
+  input_language: ^0.1.0
 ```
 
 ## Usage
@@ -34,7 +34,7 @@ dependencies:
 ### Read and observe
 
 ```dart
-import 'package:keyboard_language/keyboard_language.dart';
+import 'package:input_language/input_language.dart';
 
 final InputLanguage? language = await KeyboardLanguage.current;
 print(language?.languageTag);  // "ar", "he-IL", "en-US", "zh-Hans" …

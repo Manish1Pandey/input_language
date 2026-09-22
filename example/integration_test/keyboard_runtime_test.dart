@@ -9,8 +9,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:keyboard_language/keyboard_language.dart';
-import 'package:keyboard_language_example/main.dart';
+import 'package:input_language/input_language.dart';
+import 'package:input_language_example/main.dart';
 
 const bool expectRtlSwitch = bool.fromEnvironment('KL_EXPECT_RTL_SWITCH');
 const bool expectRtlInitial = bool.fromEnvironment('KL_EXPECT_RTL_INITIAL');

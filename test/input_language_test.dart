@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:keyboard_language/keyboard_language.dart';
+import 'package:input_language/input_language.dart';
 
 import 'fake_platform.dart';
 

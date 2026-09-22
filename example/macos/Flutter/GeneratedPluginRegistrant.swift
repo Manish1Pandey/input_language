@@ -5,8 +5,8 @@
 import FlutterMacOS
 import Foundation
 
-import keyboard_language
+import input_language
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
-  KeyboardLanguagePlugin.register(with: registry.registrar(forPlugin: "KeyboardLanguagePlugin"))
+  InputLanguagePlugin.register(with: registry.registrar(forPlugin: "InputLanguagePlugin"))
 }

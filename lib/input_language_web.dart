@@ -1,4 +1,4 @@
-/// Web implementation of `keyboard_language`.
+/// Web implementation of `input_language`.
 ///
 /// Browsers do not expose the keyboard / IME language. This implementation
 /// reports `navigator.language` as a *weak* hint

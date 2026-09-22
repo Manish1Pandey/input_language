@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:keyboard_language/keyboard_language.dart';
+import 'package:input_language/input_language.dart';
 
 void main() => runApp(const KeyboardLanguageDemoApp());
 
-/// Demo of every keyboard_language feature.
+/// Demo of every input_language feature.
 class KeyboardLanguageDemoApp extends StatelessWidget {
   /// Creates the demo app.
   const KeyboardLanguageDemoApp({super.key});
@@ -13,7 +13,7 @@ class KeyboardLanguageDemoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'keyboard_language',
+      title: 'input_language',
       theme: ThemeData(colorSchemeSeed: Colors.teal, useMaterial3: true),
       home: const DemoPage(),
     );
@@ -110,7 +110,7 @@ class _DemoPageState extends State<DemoPage> {
     final caps = _capabilities;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('keyboard_language'),
+        title: const Text('input_language'),
         actions: <Widget>[
           IconButton(
             tooltip: 'Refresh',

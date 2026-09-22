@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:keyboard_language/keyboard_language.dart';
-import 'package:keyboard_language/keyboard_language_linux.dart';
-import 'package:keyboard_language/src/linux_sources.dart';
+import 'package:input_language/input_language.dart';
+import 'package:input_language/input_language_linux.dart';
+import 'package:input_language/src/linux_sources.dart';
 
 void main() {
   group('parsing', () {

@@ -5,7 +5,7 @@
 cmake_minimum_required(VERSION 3.14)
 
 # Project-level configuration.
-set(PROJECT_NAME "keyboard_language")
+set(PROJECT_NAME "input_language")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
@@ -14,19 +14,19 @@ cmake_policy(VERSION 3.14...3.25)
 
 # This value is used when generating builds using this plugin, so it must
 # not be changed
-set(PLUGIN_NAME "keyboard_language_plugin")
+set(PLUGIN_NAME "input_language_plugin")
 
 # Any new source files that you add to the plugin should be added here.
 list(APPEND PLUGIN_SOURCES
-  "keyboard_language_plugin.cpp"
-  "keyboard_language_plugin.h"
+  "input_language_plugin.cpp"
+  "input_language_plugin.h"
 )
 
 # Define the plugin library target. Its name must not be changed (see comment
 # on PLUGIN_NAME above).
 add_library(${PLUGIN_NAME} SHARED
-  "include/keyboard_language/keyboard_language_plugin_c_api.h"
-  "keyboard_language_plugin_c_api.cpp"
+  "include/input_language/input_language_plugin_c_api.h"
+  "input_language_plugin_c_api.cpp"
   ${PLUGIN_SOURCES}
 )
 
@@ -51,7 +51,7 @@ target_link_libraries(${PLUGIN_NAME} PRIVATE flutter flutter_wrapper_plugin)
 # List of absolute paths to libraries that should be bundled with the plugin.
 # This list could contain prebuilt libraries, or libraries created by an
 # external build triggered from this build file.
-set(keyboard_language_bundled_libraries
+set(input_language_bundled_libraries
   ""
   PARENT_SCOPE
 )

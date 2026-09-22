@@ -4,7 +4,7 @@ import 'capabilities.dart';
 import 'input_language.dart';
 import 'method_channel.dart';
 
-/// The interface every platform implementation of `keyboard_language`
+/// The interface every platform implementation of `input_language`
 /// implements. Apps use `KeyboardLanguage`; this class is for implementers and
 /// tests.
 abstract class KeyboardLanguagePlatform extends PlatformInterface {

@@ -1,4 +1,4 @@
-package dev.manishpanday.keyboard_language
+package dev.manishpanday.input_language
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -20,7 +20,7 @@ import io.flutter.plugin.common.MethodChannel.Result
 import java.util.Locale
 
 /**
- * Android implementation of keyboard_language.
+ * Android implementation of input_language.
  *
  * Reads [InputMethodManager.getCurrentInputMethodSubtype] (the language the
  * current IME says it is typing in). Android has no broadcast for subtype
@@ -29,7 +29,7 @@ import java.util.Locale
  * switches. Apps cannot switch the IME or its subtype, so `setLanguage`
  * reports `unsupported`.
  */
-class KeyboardLanguagePlugin : FlutterPlugin, MethodCallHandler, EventChannel.StreamHandler {
+class InputLanguagePlugin : FlutterPlugin, MethodCallHandler, EventChannel.StreamHandler {
   private lateinit var methodChannel: MethodChannel
   private lateinit var eventChannel: EventChannel
   private lateinit var context: Context
@@ -49,9 +49,9 @@ class KeyboardLanguagePlugin : FlutterPlugin, MethodCallHandler, EventChannel.St
 
   override fun onAttachedToEngine(binding: FlutterPlugin.FlutterPluginBinding) {
     context = binding.applicationContext
-    methodChannel = MethodChannel(binding.binaryMessenger, "dev.manishpanday/keyboard_language")
+    methodChannel = MethodChannel(binding.binaryMessenger, "dev.manishpanday/input_language")
     methodChannel.setMethodCallHandler(this)
-    eventChannel = EventChannel(binding.binaryMessenger, "dev.manishpanday/keyboard_language/events")
+    eventChannel = EventChannel(binding.binaryMessenger, "dev.manishpanday/input_language/events")
     eventChannel.setStreamHandler(this)
   }
 

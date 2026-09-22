@@ -11,13 +11,13 @@ class MethodChannelKeyboardLanguage extends KeyboardLanguagePlatform {
   /// The method channel shared with the native code.
   @visibleForTesting
   static const MethodChannel methodChannel = MethodChannel(
-    'dev.manishpanday/keyboard_language',
+    'dev.manishpanday/input_language',
   );
 
-  /// The event channel that streams keyboard-language changes.
+  /// The event channel that streams input-language changes.
   @visibleForTesting
   static const EventChannel eventChannel = EventChannel(
-    'dev.manishpanday/keyboard_language/events',
+    'dev.manishpanday/input_language/events',
   );
 
   @override

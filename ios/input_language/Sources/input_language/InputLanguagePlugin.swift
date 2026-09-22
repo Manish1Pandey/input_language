@@ -1,7 +1,7 @@
 import Flutter
 import UIKit
 
-/// iOS implementation of keyboard_language.
+/// iOS implementation of input_language.
 ///
 /// iOS exposes the keyboard language only as `UITextInputMode.primaryLanguage`
 /// of the *first responder*. While a Flutter text field is being edited, the
@@ -9,20 +9,20 @@ import UIKit
 /// reliable while a text field has focus; otherwise `getCurrent` returns nil.
 /// Apps cannot switch the keyboard on iOS (no public API), so `setLanguage`
 /// reports `unsupported`.
-public class KeyboardLanguagePlugin: NSObject, FlutterPlugin, FlutterStreamHandler {
+public class InputLanguagePlugin: NSObject, FlutterPlugin, FlutterStreamHandler {
   private var eventSink: FlutterEventSink?
   private var observers: [NSObjectProtocol] = []
   private var lastSent: NSDictionary?
   private var hasSent = false
 
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let instance = KeyboardLanguagePlugin()
+    let instance = InputLanguagePlugin()
     let channel = FlutterMethodChannel(
-      name: "dev.manishpanday/keyboard_language",
+      name: "dev.manishpanday/input_language",
       binaryMessenger: registrar.messenger())
     registrar.addMethodCallDelegate(instance, channel: channel)
     let events = FlutterEventChannel(
-      name: "dev.manishpanday/keyboard_language/events",
+      name: "dev.manishpanday/input_language/events",
       binaryMessenger: registrar.messenger())
     events.setStreamHandler(instance)
   }
@@ -131,7 +131,7 @@ enum FirstResponderFinder {
   static func find() -> UIResponder? {
     captured = nil
     UIApplication.shared.sendAction(
-      #selector(UIResponder.keyboardLanguage_captureFirstResponder(_:)),
+      #selector(UIResponder.inputLanguage_captureFirstResponder(_:)),
       to: nil, from: nil, for: nil)
     if let responder = captured {
       captured = nil
@@ -163,7 +163,7 @@ enum FirstResponderFinder {
 }
 
 extension UIResponder {
-  @objc fileprivate func keyboardLanguage_captureFirstResponder(_ sender: Any?) {
+  @objc fileprivate func inputLanguage_captureFirstResponder(_ sender: Any?) {
     FirstResponderFinder.captured = self
   }
 }

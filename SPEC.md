@@ -1,4 +1,4 @@
-# keyboard_language — functional specification
+# input_language — functional specification
 
 Written before any code. Solves [flutter/flutter#25841](https://github.com/flutter/flutter/issues/25841)
 ("detect the keyboard language / input language") and answers
@@ -80,7 +80,7 @@ class AutoDirectionTextField extends StatefulWidget;
 | setLanguage | no | no | yes | yes | no | no |
 | text fallback | yes | yes | yes | yes | yes | yes |
 
-Native channel: `MethodChannel('dev.manishpanday/keyboard_language')` with methods `getCurrent`,
-`getAvailable`, `setLanguage`, `getCapabilities`; `EventChannel('dev.manishpanday/keyboard_language/events')`
+Native channel: `MethodChannel('dev.manishpanday/input_language')` with methods `getCurrent`,
+`getAvailable`, `setLanguage`, `getCapabilities`; `EventChannel('dev.manishpanday/input_language/events')`
 with argument `{pollIntervalMs}`. Every language payload is a map
 `{languageTag, displayName?, inputSourceId?, source}`.

@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 
 import 'bidi.dart';
 import 'input_language.dart';
-import 'keyboard_language.dart';
+import 'input_language_api.dart';
 
 /// How [resolveTextDirection] combines the keyboard language with the typed
 /// text.

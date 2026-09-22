@@ -6,9 +6,9 @@
 
 #include "generated_plugin_registrant.h"
 
-#include <keyboard_language/keyboard_language_plugin_c_api.h>
+#include <input_language/input_language_plugin_c_api.h>
 
 void RegisterPlugins(flutter::PluginRegistry* registry) {
-  KeyboardLanguagePluginCApiRegisterWithRegistrar(
-      registry->GetRegistrarForPlugin("KeyboardLanguagePluginCApi"));
+  InputLanguagePluginCApiRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("InputLanguagePluginCApi"));
 }
