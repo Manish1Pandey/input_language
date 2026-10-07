@@ -180,6 +180,12 @@ while the field has focus still has to be checked by hand.
 capabilities, the auto-direction field with each policy, the builder, and the bidi playground.
 `flutter test integration_test -d macos` exercises the real native code.
 
+## Links
+
+- **Documentation and live demo:** [flutterdev.in/packages/input_language](https://flutterdev.in/packages/input_language/)
+- **More Flutter packages:** [flutterdev.in](https://flutterdev.in)
+- **Learn data structures & algorithms in Dart:** [Algoistan](https://algoistan.flutterdev.in)
+
 ## License
 
 MIT © 2026 Manish Kumar Panday
