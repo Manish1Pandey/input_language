@@ -155,11 +155,11 @@ class _DemoPageState extends State<DemoPage> {
                   segments: const <ButtonSegment<AutoDirectionPolicy>>[
                     ButtonSegment(
                       value: AutoDirectionPolicy.keyboardThenText,
-                      label: Text('Keyboard→text'),
+                      label: Text('Keyboard first'),
                     ),
                     ButtonSegment(
                       value: AutoDirectionPolicy.textThenKeyboard,
-                      label: Text('Text→keyboard'),
+                      label: Text('Text first'),
                     ),
                     ButtonSegment(
                       value: AutoDirectionPolicy.textOnly,
