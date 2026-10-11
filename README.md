@@ -26,7 +26,7 @@ it.
 
 ```yaml
 dependencies:
-  input_language: ^0.1.0
+  input_language: ^0.1.1
 ```
 
 ## Usage

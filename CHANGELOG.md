@@ -1,3 +1,10 @@
+## 0.1.1
+
+* Docs: the README now explains Bidi (bidirectional text) detection in full: the
+  first-strong-character rule, which characters count, worked examples, isolates, and
+  when to use `detectTextDirection` vs `isRtlLanguageTag`.
+* Package homepage now points to https://flutterdev.in/packages/input_language/.
+
 ## 0.1.0
 
 * Initial release.

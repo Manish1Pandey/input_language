@@ -1,6 +1,6 @@
 name: input_language
 description: Detect and stream the active keyboard / input language (BCP-47, RTL) on iOS, Android, macOS, Windows, Linux and web, and auto-set TextField direction.
-version: 0.1.0
+version: 0.1.1
 homepage: https://flutterdev.in/packages/input_language/
 repository: https://github.com/Manish1Pandey/input_language
 issue_tracker: https://github.com/Manish1Pandey/input_language/issues
