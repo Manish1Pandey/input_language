@@ -87,6 +87,17 @@ web's weak browser-locale hint never overrides typed text.
 
 ### Bidi detection
 
+**Bidi** is short for **bidirectional text**: text that mixes scripts written right-to-left
+(Hebrew, Arabic, Persian, Urdu and others) with scripts written left-to-right (English and most
+other languages) and with digits. A text field can only lay out its content in one base
+direction, so it has to choose: should `שלום world` start from the right edge or the left?
+
+Get it wrong and the cursor jumps to the wrong side, punctuation lands at the wrong end of the
+line, and right-to-left users see their sentence scrambled. The OS keyboard language (above)
+tells you what the user *intends* to type; Bidi detection tells you what the text *actually
+contains*, which matters for text that was pasted, loaded from a server, or typed before the
+keyboard was switched.
+
 ```dart
 detectTextDirection('123 - שלום');          // TextDirection.rtl
 detectTextDirection('Flutter و دارت');      // TextDirection.ltr
@@ -95,13 +106,64 @@ isRtlLanguageTag('ur-PK');                  // true
 isRtlLanguageTag('pa-Arab');                // true, 'pa' alone → false
 ```
 
+#### The rule: the first strong character decides
+
+Unicode defines how bidirectional text works in the **Unicode Bidirectional Algorithm**
+([UAX #9](https://www.unicode.org/reports/tr9/)). Its rule for choosing a paragraph's direction
+is simple: skip everything that has no direction of its own, and use the direction of the
+**first strong character**. Every character falls into one of three groups:
+
+| Group | What it means | Examples |
+|---|---|---|
+| **Strong left-to-right** (`L`) | Letters of left-to-right scripts | `A`, `ж`, `क`, `中` |
+| **Strong right-to-left** (`R`, `AL`) | Letters of right-to-left scripts (`AL` is the Arabic-letter class) | `ש`, `ب`, `پ`, `ܐ` |
+| **Weak or neutral** | Characters that take their direction from the text around them | digits `1` `٣`, spaces, `-` `.` `?`, emoji, vowel and accent marks |
+
+`detectTextDirection` returns the direction of the first strong character it finds, or `null`
+when the text has none. Use `null` to keep whatever direction you had before, for example the
+app's locale or the keyboard's language.
+
+#### Worked examples
+
+| Text | Result | Why |
+|---|---|---|
+| `123 - שלום` | `rtl` | `123`, the spaces and `-` are not strong; the first strong character is Hebrew `ש`. |
+| `Flutter و دارت` | `ltr` | `F` is the first strong character, even though the text also contains Arabic. |
+| `٣٤٥ 😀` | `null` | Arabic-Indic digits and an emoji are not strong, so the text has no direction yet. |
+| `سلام!` | `rtl` | The first strong character is Arabic `س`; the `!` does not count. |
+| `(Hello)` | `ltr` | The parenthesis is neutral; `H` decides. |
+
+Two details that trip up simpler implementations:
+
+- **Vowel and accent marks are not strong.** Arabic harakat, Hebrew niqqud, and Syriac and Thaana
+  vowels sit on top of letters but have no direction of their own (`NSM`). Text that starts with
+  such a mark is still decided by the letter that follows.
+- **Isolated text is skipped.** Text wrapped in the Unicode isolate controls (`LRI`, `RLI` or `FSI`
+  up to the matching `PDI`) is meant to be laid out on its own, so its letters never decide the
+  direction of the surrounding paragraph. A quoted English name inside a Hebrew sentence, wrapped
+  in an isolate, does not flip the sentence to left-to-right.
+
+#### When to use which
+
+- **`detectTextDirection(text)`**: you have the text. Use it for pasted or server-loaded text, chat
+  messages, search results, or as the fallback when the platform can't report the keyboard.
+- **`isRtlLanguageTag(tag)`**: you only have a language tag such as `ar-EG`, `he`, `fa-IR` or
+  `ur-PK`, for example from the keyboard or the device locale. The script part of the tag wins
+  when present: `pa-Arab` (Punjabi in Arabic script) is right-to-left, while plain `pa` (written in
+  Gurmukhi) is left-to-right.
+- **`AutoDirectionTextField`** (above) combines both: it follows the keyboard while the field is
+  empty and the typed text once there is some, according to the policy you choose.
+
+#### Precision
+
 `detectTextDirection` implements UAX #9 rules P2/P3: it returns the direction of the first strong
 character (L, or R/AL) and skips text inside isolates (LRI/RLI/FSI…PDI). It uses a table generated
 from the **Unicode 16.0** character database (`tool/generate_bidi_table.py`), so combining marks
 (harakat, niqqud, Syriac and Thaana vowels, N'Ko tones), Arabic-Indic digits and punctuation are
 correctly *not* strong. It covers Hebrew, Arabic (Persian and Urdu letters, Supplement,
 Extended-A/B/C, Presentation Forms), Syriac, Thaana, N'Ko, Samaritan, Mandaic, Adlam and Hanifi
-Rohingya, and the RTL defaults for unassigned code points in those blocks.
+Rohingya, and the RTL defaults for unassigned code points in those blocks. It looks at the first
+paragraph only, the same way a text field applies one direction to all of its content.
 
 ### Switching the keyboard (macOS, Windows)
 
