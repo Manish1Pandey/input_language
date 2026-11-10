@@ -10,6 +10,10 @@ keyboard language"). Also answers
 language from code"): it works on macOS and Windows, and on the other platforms the OS doesn't
 allow it (see below).
 
+![Typing Hebrew and Arabic into Flutter web text fields: each field flips to right-to-left as soon as the first Hebrew or Arabic letter is typed](screenshots/demo.gif)
+
+*Flutter web, where the browser does not expose the keyboard: `AutoDirectionTextField` and `AutoDirectionBuilder` fall back to Bidi detection, so `123 - שלום` turns right-to-left at the first Hebrew letter and the Arabic message field flips to `rtl`.*
+
 <img src="https://raw.githubusercontent.com/Manish1Pandey/input_language/main/screenshots/ios_hebrew_rtl.png" width="300" alt="Example app on the iOS simulator: Hebrew keyboard detected, text field switched to right-to-left">
 
 *Example app on the iOS 18.6 simulator: the Hebrew keyboard is detected (`he-IL · RTL`) and the

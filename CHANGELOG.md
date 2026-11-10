@@ -1,3 +1,7 @@
+## 0.1.2
+
+* README: demo GIF.
+
 ## 0.1.1
 
 * Docs: the README now explains Bidi (bidirectional text) detection in full: the

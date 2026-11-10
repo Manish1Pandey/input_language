@@ -1,6 +1,6 @@
 name: input_language
 description: Detect and stream the active keyboard / input language (BCP-47, RTL) on iOS, Android, macOS, Windows, Linux and web, and auto-set TextField direction.
-version: 0.1.1
+version: 0.1.2
 homepage: https://flutterdev.in/packages/input_language/
 repository: https://github.com/Manish1Pandey/input_language
 issue_tracker: https://github.com/Manish1Pandey/input_language/issues
@@ -12,6 +12,8 @@ topics:
   - localization
 
 screenshots:
+  - description: "Animated: on web, text fields flip to right-to-left as Hebrew or Arabic is typed (Bidi detection)."
+    path: screenshots/demo.gif
   - description: "iOS simulator with the Hebrew keyboard active: the example reports he-IL and AutoDirectionTextField is right-to-left."
     path: screenshots/ios_hebrew_rtl.png
 
