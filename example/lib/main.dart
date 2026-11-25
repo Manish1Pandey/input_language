@@ -1,5 +1,6 @@
 import 'dart:async';
 
+// ignore: deprecated_member_use
 import 'package:flutter/material.dart';
 import 'package:input_language/input_language.dart';
 

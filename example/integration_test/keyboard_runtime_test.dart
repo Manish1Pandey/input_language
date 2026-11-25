@@ -6,6 +6,7 @@
 // selected_input_method_subtype <hash>). With KL_EXPECT_RTL_INITIAL=true the
 // keyboard is expected to already be right-to-left when the field is focused.
 
+// ignore: deprecated_member_use
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
